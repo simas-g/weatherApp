@@ -1,7 +1,7 @@
 const express = require("express");
 require("dotenv").config();
-const app = express();
 
+const app = express();
 app.get("/api/weather", async (req, res) => {
   const city = req.query.city;
   console.log("city requested:", city);
@@ -9,7 +9,7 @@ app.get("/api/weather", async (req, res) => {
   //validation
   if (!city) {
     return res.status(400).json({
-      error: "City parameter is required",
+      error: "City is required",
     });
   }
   if (city.trim().length === 0) {
@@ -38,7 +38,6 @@ app.get("/api/weather", async (req, res) => {
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.WEATHER_API_KEY}&units=metric`
     );
     const weatherData = await weatherRes.json();
-
     return res.status(200).json({
       city: weatherData.name,
       temperature: weatherData.main.temp,
@@ -54,3 +53,5 @@ app.get("/api/weather", async (req, res) => {
 app.listen(process.env.PORT || 5000, () => {
   console.log(`Server is running on port ${process.env.PORT || 5000}`);
 });
+
+module.exports = app
