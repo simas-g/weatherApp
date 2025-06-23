@@ -1,11 +1,10 @@
 import { useRef, useState } from "react";
-import styles from "./App.css";
+import "./App.css";
 import WeatherData from "./components/WeatherData";
 export default function App() {
   const city = useRef("");
   const [error, setError] = useState(null);
   const [weatherData, setWeatherData] = useState(null);
-  const [loading, setLoading] = useState(false);
   const handleSubmit = async (e) => {
     const cityName = city.current.value.trim();
     if (cityName === "") {
