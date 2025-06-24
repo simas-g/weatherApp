@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import "./App.css";
-import WeatherData from "./components/WeatherData";
+import WeatherData from "../../src/components/WeatherData";
 export default function App() {
   const city = useRef("");
   const [error, setError] = useState(null);
