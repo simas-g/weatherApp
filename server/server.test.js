@@ -24,7 +24,7 @@ describe("Input validation", () => {
     expect(response.body).toHaveProperty("error");
   });
 
-  test("should return 404 status and error message for non-existent city", async () => {
+  test("should return 404 status and error message for non-existent/not found city", async () => {
     const response = await request(app).get("/api/weather").query({ city: "NonExistentCity" });
     expect(response.statusCode).toBe(404);
     expect(response.body).toHaveProperty("error");
